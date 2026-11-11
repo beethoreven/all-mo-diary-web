@@ -115,6 +115,10 @@ textarea { width: 100%; min-height: 4em; }
 .field-name { flex: 1 1 12em; min-width: 10em; }
 .cell-name { width: 100%; min-width: 8em; }
 .cell-sort { width: 4.5em; }
+/* Font table: keep the checkbox labels and the delete button on one line; the file picker is
+   the column that gives way (its 未選擇任何檔案 text is cut short instead of pushing the others). */
+.admin td label, .admin td button { white-space: nowrap; }
+.admin td input[type=file] { width: 15em; max-width: 100%; }
 .pill { display: inline-block; border-radius: 999px; padding: 0 10px; background: var(--surface2); font-size: 12px; }
 .banner { border-radius: 14px; padding: 10px 14px; margin-bottom: 12px; background: var(--surface2); }
 .banner.warn { border: 1px solid var(--warn); }
