@@ -123,3 +123,7 @@ textarea { width: 100%; min-height: 4em; }
 .danger { color: var(--danger); }
 pre.log { white-space: pre-wrap; word-break: break-all; font-size: 12px; background: var(--surface2); border-radius: 12px; padding: 10px; max-height: 420px; overflow: auto; }
 progress { width: 10em; }
+
+/* .btn and other elements that set display override the browser's built-in [hidden] rule
+   (the 管理後台 link showed before signing in); force it back, as mama-fufood-web does. */
+[hidden] { display: none !important; }
