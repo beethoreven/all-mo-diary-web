@@ -80,3 +80,46 @@ th, td { border: 1px solid var(--border); padding: 6px 8px; vertical-align: top;
 th { background: var(--surface2); font-weight: 500; }
 code { background: var(--surface2); padding: 0 4px; border-radius: 4px; font-size: 13px; }
 footer { text-align: center; color: var(--muted); font-size: 13px; padding: 16px 16px 32px; }
+
+/* Admin console (from mama-fufood-web). */
+button {
+  font: inherit;
+  border: 1px solid var(--border);
+  background: var(--surface2);
+  color: var(--text);
+  border-radius: 999px;
+  padding: 8px 16px;
+  min-height: 40px;
+  cursor: pointer;
+}
+button:disabled { opacity: 0.5; cursor: default; }
+button.primary { background: var(--accent-fill); color: var(--on-accent); border-color: transparent; font-weight: 500; }
+button.danger { color: var(--danger); }
+input, select, textarea {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 6px 10px;
+}
+/* Native controls (select lists, file pickers) dark in dark mode. Scoped to the controls on purpose:
+   on :root it would put a white box behind the Google sign-in button (known-issue-check #41). */
+@media (prefers-color-scheme: dark) { input, select, textarea { color-scheme: dark; } }
+textarea { width: 100%; min-height: 4em; }
+:root { --danger: #bc4339; --ok: #23805a; --warn: #956500; }
+@media (prefers-color-scheme: dark) { :root { --danger: #f59a92; --ok: #8ed6b5; --warn: #f6cf7a; } }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 12px; }
+.tabs button.active { background: var(--surface); border-color: var(--accent); }
+.admin table { min-width: 0; width: 100%; }
+.field-name { flex: 1 1 12em; min-width: 10em; }
+.cell-name { width: 100%; min-width: 8em; }
+.cell-sort { width: 4.5em; }
+.pill { display: inline-block; border-radius: 999px; padding: 0 10px; background: var(--surface2); font-size: 12px; }
+.banner { border-radius: 14px; padding: 10px 14px; margin-bottom: 12px; background: var(--surface2); }
+.banner.warn { border: 1px solid var(--warn); }
+.ok { color: var(--ok); }
+.warn { color: var(--warn); }
+.danger { color: var(--danger); }
+pre.log { white-space: pre-wrap; word-break: break-all; font-size: 12px; background: var(--surface2); border-radius: 12px; padding: 10px; max-height: 420px; overflow: auto; }
+progress { width: 10em; }

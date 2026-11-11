@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>管理後台 - 全心日記</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="top">
+    <a href="index.html"><img src="favicon.png" alt="回首頁"></a>
+    <span class="title">管理後台</span>
+    <span id="who" class="muted"></span>
+    <button id="logout" hidden>登出</button>
+  </header>
+  <main>
+    <div id="status" class="card" hidden><p id="status-msg" class="muted"></p></div>
+    <div id="app" hidden>
+      <div class="tabs" id="tabs">
+        <button data-tab="fonts" class="active">字體</button>
+        <button data-tab="version">App 版本</button>
+        <button data-tab="feedback">意見回饋</button>
+        <button data-tab="admins">管理員</button>
+        <button data-tab="system">系統</button>
+      </div>
+      <div id="msg"></div>
+      <section id="tab-fonts"></section>
+      <section id="tab-version" hidden></section>
+      <section id="tab-feedback" hidden></section>
+      <section id="tab-admins" hidden></section>
+      <section id="tab-system" hidden></section>
+    </div>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
