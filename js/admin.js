@@ -165,7 +165,16 @@
         bar.hidden = false;
         input.disabled = true;
         run(async () => {
-          await api.upload(`/api/admin/fonts/${input.dataset.upload}/file`, file, (p) => { bar.value = p; });
+          try {
+            await api.upload(`/api/admin/fonts/${input.dataset.upload}/file`, file, (p) => { bar.value = p; });
+          } catch (e) {
+            // Success re-renders the table; a failure must unlock this row itself (known-issue #43).
+            input.disabled = false;
+            input.value = "";
+            bar.hidden = true;
+            bar.value = 0;
+            throw e;
+          }
           await loadFonts();
         }, "已上傳，記得按「發布」");
       };
