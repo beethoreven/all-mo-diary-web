@@ -1,4 +1,4 @@
-// Calls the backend (copied from mama-fufood-web). The admin console uses our own session (traded for
+// Calls the backend. The admin console uses our own session (traded for
 // the Google credential at sign-in), kept in this browser's localStorage so it survives reloads and
 // restarts; the Google ID token is never used as the ongoing credential (it expires in an hour).
 (function () {
@@ -42,7 +42,7 @@
 
   // Uploads a file as the raw request body, reporting progress (0–1). Font files can be tens of MB.
   // Every way the request can end settles the promise (load, network error, timeout, abort), so the
-  // caller's "uploading" state always clears (known-issue-check #43).
+  // caller's "uploading" state always clears.
   function upload(path, file, onProgress) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();

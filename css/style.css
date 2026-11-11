@@ -1,6 +1,6 @@
 /* 全心日記網站。顏色跟 App 一樣用鵝黃色；跟著系統的深淺色。
-   ★ 不要在 :root 宣告 color-scheme：之後加上 Google 登入按鈕時，它的 iframe 背後會出現白色方框
-     （known-issue-check #41）。原生表單元件需要深色時，只對 input、select 宣告。 */
+   ★ 不要在 :root 宣告 color-scheme：頁面是深色、Google 登入按鈕的 iframe 是淺色時，瀏覽器會在
+     iframe 後面畫不透明的底，按鈕周圍就出現白色方框。原生表單元件需要深色時，只對 input、select 宣告。 */
 :root {
   --bg: #fbf8f1;
   --surface: #ffffff;
@@ -81,7 +81,7 @@ th { background: var(--surface2); font-weight: 500; }
 code { background: var(--surface2); padding: 0 4px; border-radius: 4px; font-size: 13px; }
 footer { text-align: center; color: var(--muted); font-size: 13px; padding: 16px 16px 32px; }
 
-/* Admin console (from mama-fufood-web). */
+/* Admin console. */
 button {
   font: inherit;
   border: 1px solid var(--border);
@@ -104,7 +104,7 @@ input, select, textarea {
   padding: 6px 10px;
 }
 /* Native controls (select lists, file pickers) dark in dark mode. Scoped to the controls on purpose:
-   on :root it would put a white box behind the Google sign-in button (known-issue-check #41). */
+   on :root it would put a white box behind the Google sign-in button (its iframe is light). */
 @media (prefers-color-scheme: dark) { input, select, textarea { color-scheme: dark; } }
 textarea { width: 100%; min-height: 4em; }
 :root { --danger: #bc4339; --ok: #23805a; --warn: #956500; }
@@ -129,5 +129,5 @@ pre.log { white-space: pre-wrap; word-break: break-all; font-size: 12px; backgro
 progress { width: 10em; }
 
 /* .btn and other elements that set display override the browser's built-in [hidden] rule
-   (the 管理後台 link showed before signing in); force it back, as mama-fufood-web does. */
+   (the 管理後台 link showed before signing in); force it back. */
 [hidden] { display: none !important; }

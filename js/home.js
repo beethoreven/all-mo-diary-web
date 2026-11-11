@@ -1,4 +1,4 @@
-// Home page: Google sign-in for admins (as mama-fufood-web). Ordinary users signing in get nothing;
+// Home page: Google sign-in for admins. Ordinary users signing in get nothing;
 // an admin gets the 管理後台 link. The credential goes to the backend once to check for an admin and
 // is then discarded; the admin session that comes back is what the console uses.
 (function () {

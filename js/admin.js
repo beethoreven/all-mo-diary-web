@@ -1,4 +1,4 @@
-// 全心日記 admin console (adapted from mama-fufood-web's admin.js).
+// 全心日記 admin console.
 // ★ The lock here is cosmetic: every admin API on the backend requires an admin session
 //   (router-backend apps/diary/access.py).
 (function () {
@@ -19,12 +19,12 @@
   };
   const mb = (bytes) => (bytes / 1024 / 1024).toFixed(1) + " MB";
   // Every load takes a number; a slow old response that comes back after a newer one is dropped
-  // instead of overwriting the newer screen (known-issue-check #2 / #26).
+  // instead of overwriting the newer screen.
   const gen = { fonts: 0, feedback: 0, detail: 0 };
   let feedbackFilters = { kind: "", status: "", app_version: "", device_model: "", page: 1 };
   // Font uploads in progress: font id → progress (0–1). Kept here, not in the table: the table is
   // rebuilt by any edit, publish or tab switch during an upload, and the rebuilt row must still show
-  // the upload and not offer a second one (known-issue-check #46).
+  // the upload and not offer a second one.
   const uploading = new Map();
 
   function message(text, kind) {
