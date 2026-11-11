@@ -41,10 +41,14 @@
   }
 
   // Uploads a file as the raw request body, reporting progress (0–1). Font files can be tens of MB.
+  // Every way the request can end settles the promise (load, network error, timeout, abort), so the
+  // caller's "uploading" state always clears (known-issue-check #43).
   function upload(path, file, onProgress) {
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
       xhr.open("POST", cfg.apiBase + path);
+      // The backend gives GitHub up to 10 minutes; this waits a little longer than that.
+      xhr.timeout = 15 * 60 * 1000;
       const t = token();
       if (t) xhr.setRequestHeader("Authorization", "Bearer " + t);
       xhr.setRequestHeader("Content-Type", "application/gzip");
@@ -57,6 +61,8 @@
         reject({ status: xhr.status, code: data.code, error: data.error || `後端回應錯誤（${xhr.status}）` });
       };
       xhr.onerror = () => reject({ status: 0, error: "連不上後端，請稍後再試" });
+      xhr.ontimeout = () => reject({ status: 0, error: "上傳太久沒有完成，請再試一次" });
+      xhr.onabort = () => reject({ status: 0, error: "上傳被中斷了，請再試一次" });
       xhr.send(file);
     });
   }

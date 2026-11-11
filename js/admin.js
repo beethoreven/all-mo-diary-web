@@ -22,6 +22,10 @@
   // instead of overwriting the newer screen (known-issue-check #2 / #26).
   const gen = { fonts: 0, feedback: 0, detail: 0 };
   let feedbackFilters = { kind: "", status: "", app_version: "", device_model: "", page: 1 };
+  // Font uploads in progress: font id → progress (0–1). Kept here, not in the table: the table is
+  // rebuilt by any edit, publish or tab switch during an upload, and the rebuilt row must still show
+  // the upload and not offer a second one (known-issue-check #46).
+  const uploading = new Map();
 
   function message(text, kind) {
     $("msg").innerHTML = text ? `<div class="banner ${kind === "warn" ? "warn" : ""}">${esc(text)}</div>` : "";
@@ -97,8 +101,8 @@
         <td>${f.download_url
           ? `<span title="${esc(f.file_name)}">安裝後 ${mb(f.font_bytes)}<br><span class="muted">下載 ${mb(f.download_bytes)}</span></span>`
           : '<span class="muted">還沒上傳</span>'}
-          <br><input type="file" accept=".gz,application/gzip" data-upload="${f.id}" ${o.fonts_upload_configured ? "" : "disabled"}>
-          <progress data-progress="${f.id}" max="1" value="0" hidden></progress></td>
+          <br><input type="file" accept=".gz,application/gzip" data-upload="${f.id}" ${o.fonts_upload_configured && !uploading.has(f.id) ? "" : "disabled"}>
+          <progress data-progress="${f.id}" max="1" value="${uploading.get(f.id) || 0}" ${uploading.has(f.id) ? "" : "hidden"}></progress></td>
         <td>${f.published || publishedIds.has(f.id) ? '<span class="muted">已發布</span>' : `<button data-del-font="${f.id}" class="danger">刪除</button>`}</td>
       </tr>`).join("");
     $("tab-fonts").innerHTML = `
@@ -161,21 +165,24 @@
         const file = input.files && input.files[0];
         if (!file) return;
         if (!file.name.endsWith(".gz")) { message("請上傳字體瘦身工具產生的 .otf.gz", "warn"); input.value = ""; return; }
-        const bar = document.querySelector(`[data-progress="${input.dataset.upload}"]`);
-        bar.hidden = false;
+        const id = Number(input.dataset.upload);
+        if (uploading.has(id)) return;
+        uploading.set(id, 0);
         input.disabled = true;
+        // Looked up on every update: the table may have been rebuilt since the upload started.
+        const showProgress = () => {
+          const bar = document.querySelector(`[data-progress="${id}"]`);
+          if (bar) { bar.hidden = false; bar.value = uploading.get(id) || 0; }
+        };
+        showProgress();
         run(async () => {
           try {
-            await api.upload(`/api/admin/fonts/${input.dataset.upload}/file`, file, (p) => { bar.value = p; });
-          } catch (e) {
-            // Success re-renders the table; a failure must unlock this row itself (known-issue #43).
-            input.disabled = false;
-            input.value = "";
-            bar.hidden = true;
-            bar.value = 0;
-            throw e;
+            await api.upload(`/api/admin/fonts/${id}/file`, file, (p) => { uploading.set(id, p); showProgress(); });
+          } finally {
+            // Success or failure, the row is rebuilt from the server without the upload state.
+            uploading.delete(id);
+            await loadFonts();
           }
-          await loadFonts();
         }, "已上傳，記得按「發布」");
       };
     });
