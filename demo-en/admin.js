@@ -1,7 +1,7 @@
 // 由 demo/tools/build.py 從 js/admin.js 產生,不要手改。
 // 全心日記 admin console.
 // ★ The lock here is cosmetic: every admin API on the backend requires an admin session
-//   (router-backend apps/diary/access.py).
+//   (router-backend apps/all_mo_diary/admin_routes.py).
 (function () {
   const api = window.amdApi;
   const $ = (id) => document.getElementById(id);
