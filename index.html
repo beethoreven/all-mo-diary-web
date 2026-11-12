@@ -18,40 +18,47 @@
     <a id="admin-link" class="btn primary" href="admin.html" hidden>管理後台</a>
   </header>
   <main>
-    <div class="card">
-      <div class="row">
-        <img src="icon_256.png" alt="App 圖示" width="96" height="96" style="border-radius: 22px">
-        <div class="grow">
-          <h1 style="margin: 0; font-size: 22px">全心日記</h1>
-          <p style="margin: 6px 0 0">一天一篇的日記：可以調整字體大小、粗體、顏色，加上圖片，
-            再用行事曆、篩選與搜尋找回過去的日記。</p>
+    <nav class="tabs" id="tabs">
+      <button data-doc="" class="active">介紹</button>
+      <button data-doc="terms">使用者條款</button>
+      <button data-doc="privacy">隱私權政策</button>
+    </nav>
+    <article class="card legal" id="doc" hidden></article>
+    <div id="intro">
+      <div class="card">
+        <div class="row">
+          <img src="icon_256.png" alt="App 圖示" width="96" height="96" style="border-radius: 22px">
+          <div class="grow">
+            <h1 style="margin: 0; font-size: 22px">全心日記</h1>
+            <p style="margin: 6px 0 0">一天一篇的日記：可以調整字體大小、粗體、顏色，加上圖片，
+              再用行事曆、篩選與搜尋找回過去的日記。</p>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="card">
-      <h2 style="margin-top: 0; font-size: 17px">你的日記只在你手上</h2>
-      <ul>
-        <li>日記與圖片只存在你的手機，或你自己的 Google 雲端硬碟（開啟雲端功能時）。</li>
-        <li>匯出檔整份加密，只能用匯出時的 Google 帳號匯入；我們拿不到金鑰。</li>
-        <li>沒有廣告，也沒有任何分析工具。</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h2 style="margin-top: 0; font-size: 17px">條款與政策</h2>
-      <div class="links">
-        <a class="btn" href="legal.html?doc=terms">使用者條款</a>
-        <a class="btn" href="legal.html?doc=privacy">隱私權政策</a>
+      <div class="card">
+        <h2 style="margin-top: 0; font-size: 17px">你的日記只在你手上</h2>
+        <ul>
+          <li>日記與圖片只存在你的手機，或你自己的 Google 雲端硬碟（開啟雲端功能時）。</li>
+          <li>匯出檔整份加密，只能用匯出時的 Google 帳號匯入；我們拿不到金鑰。</li>
+          <li>沒有廣告，也沒有任何分析工具。</li>
+        </ul>
       </div>
-    </div>
-    <div class="card">
-      <h2 style="margin-top: 0; font-size: 17px">下載</h2>
-      <p class="muted" style="margin: 0">目前尚未在 Google Play 上架。</p>
+      <div class="card">
+        <h2 style="margin-top: 0; font-size: 17px">下載</h2>
+        <p class="row" id="apk" hidden>
+          <a id="apk-link" class="btn primary" href="">下載最新版全心日記</a>
+          <span id="apk-version" class="muted"></span>
+        </p>
+        <p class="muted" id="apk-note" hidden style="margin: 0 0 8px">Android 手機下載後點開安裝；第一次安裝需要允許瀏覽器「安裝不明應用程式」。</p>
+        <p id="play" style="margin: 0">目前尚未在 Google Play 上架。</p>
+      </div>
     </div>
     <p id="login-note" class="muted"></p>
   </main>
   <footer>阿舍老師 · <a href="mailto:tutorarthurouat@outlook.com">tutorarthurouat@outlook.com</a></footer>
   <script src="js/config.js"></script>
   <script src="js/api.js"></script>
+  <script src="js/md.js"></script>
   <script src="js/home.js"></script>
   <script src="https://accounts.google.com/gsi/client" async defer onload="window.amdHomeGsiReady && window.amdHomeGsiReady()"
     onerror="document.getElementById('login-note').textContent = '無法載入 Google 登入元件（不影響瀏覽網站）。'"></script>

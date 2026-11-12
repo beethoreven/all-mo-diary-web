@@ -74,6 +74,7 @@ main { max-width: 860px; margin: 0 auto; padding: 16px; }
 .btn.primary { background: var(--accent-fill); color: var(--on-accent); border-color: transparent; }
 .legal h2 { font-size: 17px; margin: 22px 0 8px; }
 .legal p, .legal li { color: var(--text); }
+.legal blockquote { margin: 12px 0; padding: 10px 14px; background: var(--surface2); border-radius: 12px; }
 .scroll-x { overflow-x: auto; }
 table { border-collapse: collapse; font-size: 13px; min-width: 560px; }
 th, td { border: 1px solid var(--border); padding: 6px 8px; vertical-align: top; text-align: left; }

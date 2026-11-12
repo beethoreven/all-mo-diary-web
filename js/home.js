@@ -6,6 +6,58 @@
   const api = window.amdApi;
   const $ = (id) => document.getElementById(id);
 
+  if (cfg.playUrl) {
+    $("play").innerHTML = "";
+    const a = document.createElement("a");
+    a.href = cfg.playUrl;
+    a.className = "btn primary";
+    a.textContent = "到 Google Play 下載";
+    $("play").appendChild(a);
+  }
+
+  // The APK is attached to a GitHub Release of all-mo-diary-app: tag v<version>, file
+  // all-mo-diary-<version>.apk. Empty apkVersion hides the button.
+  if (cfg.apkVersion) {
+    const v = cfg.apkVersion;
+    $("apk-link").href = `https://github.com/beethoreven/all-mo-diary-app/releases/download/v${v}/all-mo-diary-${v}.apk`;
+    $("apk-version").textContent = `版本 ${v}`;
+    $("apk").hidden = false;
+    $("apk-note").hidden = false;
+  }
+
+  // The introduction and the two documents are tabs on this page. ?doc=privacy opens that document
+  // directly, and switching tabs updates the address so it can be copied. legal.html stays for the
+  // links inside the app and on Google's consent screen.
+  const DOCS = { terms: "使用者條款", privacy: "隱私權政策" };
+  const loaded = {};
+  async function showTab(doc) {
+    if (!Object.prototype.hasOwnProperty.call(DOCS, doc)) doc = "";
+    for (const b of $("tabs").querySelectorAll("button")) b.classList.toggle("active", b.dataset.doc === doc);
+    $("intro").hidden = !!doc;
+    $("doc").hidden = !doc;
+    document.title = doc ? DOCS[doc] + " - 全心日記" : "全心日記";
+    history.replaceState(null, "", doc ? "?doc=" + doc : location.pathname);
+    if (!doc) return;
+    if (!loaded[doc]) {
+      $("doc").innerHTML = '<p class="muted">載入中…</p>';
+      try {
+        const r = await fetch("legal/" + doc + ".md", { cache: "no-cache" });
+        if (!r.ok) throw new Error();
+        loaded[doc] = window.renderMarkdown(await r.text());
+      } catch (e) {
+        $("doc").innerHTML = "<p>載入失敗，請重新整理。</p>";
+        return;
+      }
+    }
+    // Only if that tab is still the one shown: a slow load must not cover a tab picked meanwhile.
+    if (!$("doc").hidden && document.querySelector("#tabs button.active").dataset.doc === doc) $("doc").innerHTML = loaded[doc];
+  }
+  $("tabs").onclick = (ev) => {
+    const b = ev.target.closest("button");
+    if (b) showTab(b.dataset.doc);
+  };
+  showTab(new URLSearchParams(location.search).get("doc") || "");
+
   async function showAdmin() {
     try {
       const me = await api.call("GET", "/api/admin/me", undefined, { timeoutMs: 20000 });
