@@ -106,7 +106,7 @@
         <td>${f.published || publishedIds.has(f.id) ? '<span class="muted">已發布</span>' : `<button data-del-font="${f.id}" class="danger">刪除</button>`}</td>
       </tr>`).join("");
     $("tab-fonts").innerHTML = `
-      ${o.fonts_upload_configured ? "" : '<div class="banner warn">後端還沒設定字體的 GitHub repo（DIARY__FONTS_REPO、DIARY__GITHUB_TOKEN），目前不能上傳。</div>'}
+      ${o.fonts_upload_configured ? "" : '<div class="banner warn">後端還沒設定字體的 GitHub repo（ALL_MO_DIARY__FONTS_REPO、ALL_MO_DIARY__GITHUB_TOKEN），目前不能上傳。</div>'}
       ${o.cache_consistent ? "" : '<div class="banner warn">快取版本和資料庫版本不一致，請到「系統」按「重新載入快取」。</div>'}
       <div class="card">
         <p class="muted">上傳的是<strong>字體瘦身工具</strong>產生的 <code>.otf.gz</code>（meta repo 的 tools/字體瘦身.command）。

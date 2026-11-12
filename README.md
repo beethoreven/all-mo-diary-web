@@ -28,7 +28,7 @@
 all-mo-diary/                    ← meta repo，本機開發統一入口，本身不部署
 ├── all-mo-diary-app/            ← Flutter Android App
 ├── all-mo-diary-web/            ← 本 repo，部署到 GitHub Pages（純靜態 HTML/CSS/JS）
-└── router-backend/              ← 共用後端（Render），全心日記的 API 掛在 /diary 底下
+└── router-backend/              ← 共用後端（Render），全心日記的 API 掛在 /all-mo-diary 底下
 ```
 
 沒有任何前端框架或建置流程，`.html`、`.css`、`.js` 直接交給 GitHub Pages。唯一的外部 script 是 Google Identity Services（Google 登入按鈕）；管理後台的資料都向後端的 `/api/admin/*` 讀寫。
@@ -105,7 +105,7 @@ python3 -m http.server 8010
 ### 2.（要試管理後台時）接上本機的後端
 
 1. 照 `router-backend` 的 README 把後端跑在本機，全心日記的設定裡 allowed origins 要包含 `http://localhost:8010`。
-2. 暫時改 `js/config.js` 的 `apiBase` 成本機後端的網址加上 `/diary`。**試完改回正式的網址，不要提交本機的網址。**
+2. 暫時改 `js/config.js` 的 `apiBase` 成本機後端的網址加上 `/all-mo-diary`。**試完改回正式的網址，不要提交本機的網址。**
 3. 重新整理首頁 → 右上角用第一位管理員的帳號登入 → 出現「管理後台」。
 
 按 `Control + C` 停止網頁伺服器。
@@ -139,7 +139,7 @@ python3 -m http.server 8010
 
 | 欄位 | 必填？ | 說明 |
 |---|---|---|
-| `apiBase` | **必填** | 後端網址加上全心日記的路徑，例如 `https://router-backend-3hl2.onrender.com/diary`，**結尾不要斜線**。 |
+| `apiBase` | **必填** | 後端網址加上全心日記的路徑，例如 `https://router-backend-3hl2.onrender.com/all-mo-diary`，**結尾不要斜線**。 |
 | `googleClientId` | **必填**（要用 Google 登入時） | Google Cloud「網頁應用程式」用戶端 ID（和後端全心日記設定的 Google 用戶端 ID 是同一個）。空白時不顯示登入按鈕。 |
 | `playUrl` | 選填 | 上架後填 Google Play 的網址；空白時首頁顯示「目前尚未在 Google Play 上架」。 |
 | `apkVersion` | 選填 | 首頁下載按鈕連到 `all-mo-diary-app` 的 Release `v<版本號>` 上的 `all-mo-diary-<版本號>.apk`；空白時不顯示按鈕。 |
@@ -176,7 +176,7 @@ The two parts are deliberately separate; the report is background, the guide is 
 all-mo-diary/                    ← meta repo, local development entry point, not deployed
 ├── all-mo-diary-app/            ← Flutter Android app
 ├── all-mo-diary-web/            ← this repo, deployed to GitHub Pages (static HTML/CSS/JS)
-└── router-backend/              ← shared backend (Render); the all-mo-diary API lives under /diary
+└── router-backend/              ← shared backend (Render); the all-mo-diary API lives under /all-mo-diary
 ```
 
 No frontend framework and no build step: the `.html`, `.css` and `.js` files go to GitHub Pages as they are. The only external script is Google Identity Services (the sign-in button); the console reads and writes everything through the backend's `/api/admin/*`.
@@ -253,7 +253,7 @@ Don't change `8010` casually: Google sign-in matches the port against the "Autho
 ### 2. (To Try the Admin Console) Connect a Local Backend
 
 1. Run the backend locally as described in the `router-backend` README, with `http://localhost:8010` among all-mo-diary's allowed origins.
-2. Temporarily set `apiBase` in `js/config.js` to the local backend's address plus `/diary`. **Change it back afterwards; never commit a local address.**
+2. Temporarily set `apiBase` in `js/config.js` to the local backend's address plus `/all-mo-diary`. **Change it back afterwards; never commit a local address.**
 3. Reload the home page → sign in at the top right with the first admin's account → the console link appears.
 
 Press `Control + C` to stop the web server.
@@ -287,7 +287,7 @@ None of these are secret (the client ID appears in the page anyway).
 
 | Field | Required? | Description |
 |---|---|---|
-| `apiBase` | **Required** | Backend address plus the all-mo-diary path, e.g. `https://router-backend-3hl2.onrender.com/diary`, **no trailing slash**. |
+| `apiBase` | **Required** | Backend address plus the all-mo-diary path, e.g. `https://router-backend-3hl2.onrender.com/all-mo-diary`, **no trailing slash**. |
 | `googleClientId` | **Required** (for Google sign-in) | Google Cloud "Web application" client ID (the same as the backend all-mo-diary settings' Google client ID). Empty hides the sign-in button. |
 | `playUrl` | Optional | Google Play address once listed; empty shows "not yet on Google Play". |
 | `apkVersion` | Optional | The download button links to `all-mo-diary-<version>.apk` on the `all-mo-diary-app` Release `v<version>`; empty hides the button. |

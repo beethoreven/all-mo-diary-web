@@ -97,8 +97,8 @@ ADMIN = [
     (">已發布</span>", ">Published</span>"),
     ('class="danger">刪除</button>`}</td>', 'class="danger">Delete</button>`}</td>'),
     (
-        "後端還沒設定字體的 GitHub repo（DIARY__FONTS_REPO、DIARY__GITHUB_TOKEN），目前不能上傳。",
-        "The backend has no GitHub repo for fonts yet (DIARY__FONTS_REPO, DIARY__GITHUB_TOKEN), so uploads are off.",
+        "後端還沒設定字體的 GitHub repo（ALL_MO_DIARY__FONTS_REPO、ALL_MO_DIARY__GITHUB_TOKEN），目前不能上傳。",
+        "The backend has no GitHub repo for fonts yet (ALL_MO_DIARY__FONTS_REPO, ALL_MO_DIARY__GITHUB_TOKEN), so uploads are off.",
     ),
     (
         "快取版本和資料庫版本不一致，請到「系統」按「重新載入快取」。",

@@ -107,7 +107,7 @@
         <td>${f.published || publishedIds.has(f.id) ? '<span class="muted">Published</span>' : `<button data-del-font="${f.id}" class="danger">Delete</button>`}</td>
       </tr>`).join("");
     $("tab-fonts").innerHTML = `
-      ${o.fonts_upload_configured ? "" : '<div class="banner warn">The backend has no GitHub repo for fonts yet (DIARY__FONTS_REPO, DIARY__GITHUB_TOKEN), so uploads are off.</div>'}
+      ${o.fonts_upload_configured ? "" : '<div class="banner warn">The backend has no GitHub repo for fonts yet (ALL_MO_DIARY__FONTS_REPO, ALL_MO_DIARY__GITHUB_TOKEN), so uploads are off.</div>'}
       ${o.cache_consistent ? "" : '<div class="banner warn">The cache and the database disagree on the version. Go to "System" and press "Reload cache".</div>'}
       <div class="card">
         <p class="muted">Upload the <code>.otf.gz</code> made by the <strong>font subsetting tool</strong> (tools/ in the meta repo).
