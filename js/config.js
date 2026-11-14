@@ -9,5 +9,5 @@ window.AMD_CONFIG = {
   // The home page's download button links to the APK on the all-mo-diary-app GitHub Release.
   // For a new version: create Release v<version> with all-mo-diary-<version>.apk attached, then set
   // this. Empty hides the button.
-  apkVersion: "1.0.0",
+  apkVersion: "1.1.0",
 };

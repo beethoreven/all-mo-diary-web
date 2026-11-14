@@ -9,7 +9,7 @@
     意見回饋 → Feedback                 管理後台 → Admin console
     字體 → font                         發布 → publish
     草稿 → draft                        快取 → cache
-    日記同步 → Sync diaries to cloud    圖片存到雲端 → Save images to cloud
+    日記同步 → Sync diaries to cloud    圖片與影片存到雲端 → Save images and videos to cloud
     營運者名稱「阿舍老師」照原文保留。
 """
 
@@ -17,8 +17,8 @@ INDEX = [
     ('lang="zh-Hant-TW"', 'lang="en"'),
     ("<title>全心日記</title>", "<title>all-mo-diary</title>"),
     (
-        'content="一天一篇的日記 App。日記與圖片只存在你的手機與你自己的 Google 雲端硬碟。"',
-        'content="A one-entry-a-day diary app. Your diaries and images stay on your phone and in your own Google Drive."',
+        'content="一天一篇的日記 App。日記、圖片與影片只存在你的手機與你自己的 Google 雲端硬碟。"',
+        'content="A one-entry-a-day diary app. Your diaries, images and videos stay on your phone and in your own Google Drive."',
     ),
     ('<span class="title">全心日記</span>', '<span class="title">all-mo-diary</span>'),
     (">管理後台</a>", ">Admin console</a>"),
@@ -28,15 +28,15 @@ INDEX = [
     ('alt="App 圖示"', 'alt="App icon"'),
     ('font-size: 22px">全心日記</h1>', 'font-size: 22px">all-mo-diary</h1>'),
     (
-        "一天一篇的日記：可以調整字體大小、粗體、顏色，加上圖片，\n"
+        "一天一篇的日記：可以調整字體大小、粗體、顏色，加上圖片與影片，\n"
         "              再用行事曆、篩選與搜尋找回過去的日記。",
-        "A diary with one entry a day: change the font size, bold and colour, add images,\n"
+        "A diary with one entry a day: change the font size, bold and colour, add images and videos,\n"
         "              and find past entries again with the calendar, filters and search.",
     ),
     (">你的日記只在你手上</h2>", ">Your diary stays with you</h2>"),
     (
-        "<li>日記與圖片只存在你的手機，或你自己的 Google 雲端硬碟（開啟雲端功能時）。</li>",
-        "<li>Your diaries and images are stored only on your phone, or in your own Google Drive when you turn on cloud features.</li>",
+        "<li>日記、圖片與影片只存在你的手機，或你自己的 Google 雲端硬碟（開啟雲端功能時）。</li>",
+        "<li>Your diaries, images and videos are stored only on your phone, or in your own Google Drive when you turn on cloud features.</li>",
     ),
     (
         "<li>匯出檔整份加密，只能用匯出時的 Google 帳號匯入；我們拿不到金鑰。</li>",
@@ -70,8 +70,8 @@ HOME = [
 
 # 英文翻譯是照哪一版的中文翻的:legal/<doc>.md 的 SHA-256。中文改了就要重翻、再更新這裡。
 LEGAL_SOURCES = {
-    "terms": "2e9b1491755faad1d5b33c87fc8f6f7c770b387bb2082011056411466cdeb7fe",
-    "privacy": "75027eb2130175fac829e8ef9632c332df1ab45d4dc5eeac097f3b4b8793e05b",
+    "terms": "e0ca6e48b84b5586393237f264bca7903a8488ea07f9d568532b7f2faf4eb0a4",
+    "privacy": "eccd5c2f9a180465a0fbde4014061048a50c77ab56259466b0a20fe89191b5fc",
 }
 
 ADMIN_HTML = [

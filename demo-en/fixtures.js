@@ -132,10 +132,11 @@ window.AMD_DEMO_FIXTURES = {
      "week_start": "monday",
      "theme": "system",
      "sync_diaries": true,
-     "sync_images": true,
+     "sync_media": true,
      "signed_in": true,
      "diaries": 128,
-     "images": 37
+     "images": 37,
+     "videos": 4
     },
     "fonts_version": "20261110021000",
     "display": {
@@ -223,10 +224,11 @@ window.AMD_DEMO_FIXTURES = {
      "week_start": "sunday",
      "theme": "light",
      "sync_diaries": false,
-     "sync_images": false,
+     "sync_media": false,
      "signed_in": true,
      "diaries": 41,
-     "images": 0
+     "images": 0,
+     "videos": 0
     },
     "fonts_version": null,
     "display": {
@@ -266,10 +268,11 @@ window.AMD_DEMO_FIXTURES = {
      "week_start": "monday",
      "theme": "dark",
      "sync_diaries": true,
-     "sync_images": false,
+     "sync_media": false,
      "signed_in": true,
      "diaries": 23,
-     "images": 5
+     "images": 5,
+     "videos": 1
     },
     "fonts_version": "20261110021000",
     "display": {

@@ -1,26 +1,26 @@
 > **This English translation is provided for demonstration only. If it differs from the Traditional Chinese version, the Traditional Chinese version prevails.**
 
-Effective date: November 11, 2026
+Effective date: November 14, 2026
 
 Welcome to all-mo-diary (the "App"). The App is provided by 阿舍老師 ("we" or "us"). By using the App, you confirm that you have read and agree to these Terms and the Privacy Policy. If you do not agree, please stop using the App and uninstall it.
 
 ## 1. What the App is
 
-1. The App is a diary: one entry a day, with text formatting and images, and a calendar, filters and search to find past entries.
+1. The App is a diary: one entry a day, with text formatting, images and videos, and a calendar, filters and search to find past entries.
 2. The App is free.
 3. You can write diaries on your phone without signing in. Downloading fonts, cloud sync, export and import, and sending feedback require signing in with a Google account.
 
 ## 2. Where your data is kept, and who looks after it
 
-1. Your diaries and images are stored only on your phone; when you turn on "Sync diaries to cloud" or "Save images to cloud", they are also stored in your own Google Drive. Our server does not keep this data.
+1. Your diaries, images and videos are stored only on your phone; when you turn on "Sync diaries to cloud" or "Save images and videos to cloud", they are also stored in your own Google Drive. Our server does not keep this data.
 2. Because the data is not with us, **keeping and backing up your data is your own responsibility**. We recommend turning on the cloud features and exporting regularly. If your phone is lost or damaged or the App is removed, and you had neither turned on the cloud features nor exported, your diaries may be impossible to recover.
-3. Your phone's system automatically backs up the diary database to your own Google account. This is a feature of the phone's system, does not go through us, and is not guaranteed to restore the latest data; images are not included in the automatic backup.
+3. Your phone's system automatically backs up the diary database to your own Google account. This is a feature of the phone's system, does not go through us, and is not guaranteed to restore the latest data; images and videos are not included in the automatic backup.
 4. When you write the same diary on several phones, **please sign in with the same Google account on each phone**. Editing the same day's entry on two phones while offline may leave them inconsistent; the App will ask you which copy to keep and cannot guarantee a full merge.
 5. There is at most one entry per day.
 
 ## 3. Export and import
 
-1. Export files are saved to your own Google Drive and are **fully encrypted (images included)**. The encryption key is stored in an area of your Google Drive that only the App can read, so a file can only be imported while signed in with the same Google account.
+1. Export files are saved to your own Google Drive and are **fully encrypted (images and videos included)**. The encryption key is stored in an area of your Google Drive that only the App can read, so a file can only be imported while signed in with the same Google account.
 2. **We never have the key and cannot decrypt an export file for you.** If you can no longer sign in to the Google account used for the export, or you delete the App's data in your Drive, the export file can no longer be opened, and nobody, including us, can recover it.
 3. An older version of the App cannot import a file exported by a newer version; please update the App first.
 
@@ -48,7 +48,7 @@ To prevent abuse, the number of update checks and feedback submissions per accou
 ## 8. Intellectual property
 
 1. The App's code, interface design, icons and text belong to us or their original owners. The open-source software and fonts the App uses (for example Noto Sans TC) are used under their own licences, which you can view under "Open-source licences" in the App.
-2. The diaries you write and the images you add belong to you.
+2. The diaries you write and the images and videos you add belong to you.
 
 ## 9. Limitation of liability
 
